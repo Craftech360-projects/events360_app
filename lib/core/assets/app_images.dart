@@ -7,4 +7,5 @@ class AppImages {
   static const String facebookLogo = "${basePath}facebook$formatPNG";
 
   static const String appBgImg = "${basePath}events360_bg$formatJPG";
+  static const String userPlaceholder = "${basePath}user_placeholder$formatPNG";
 }

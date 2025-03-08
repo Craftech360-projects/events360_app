@@ -1,24 +1,54 @@
-# events360
+# Events360
 
+Events360: Your Complete Conference Companion - Navigate schedules, connect with speakers, and maximize your event experience.
+
+## Supabase Setup
+
+### 1. Create a Supabase Project
+
+1. Go to [Supabase](https://supabase.com/) and sign up or log in
+2. Create a new project
+3. Note your project URL and anon key
+
+### 2. Set Up Environment Variables
+
+Create a `.env` file in the root of your project with the following content:
+```
+
+
+
+
+
+
+
+When you build an app with native code (like Flutter apps), the release version is typically stripped of debugging information to make it smaller. However, this makes it difficult to diagnose crashes later.
 
 1. First, modify your android/app/build.gradle to enable debug symbols generation:
 
 buildTypes {
-        release {
-            // ... other release configurations ...
-            ndk {
-                debugSymbolLevel 'SYMBOL_TABLE'
-            }
+    release {
+        signingConfig signingConfigs.release
+        minifyEnabled true
+        shrinkResources true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        
+        ndk {
+            debugSymbolLevel 'SYMBOL_TABLE'
         }
     }
+}
 
-2. When building your app bundle, use this command to generate debug symbols:
+
+//FOR AAB
+2. Or if you're building an APK:
+
+flutter build appbundle --release --split-debug-info=build/app/symbols
+
+
+//FOR IPA
+3. After fixing your build.gradle file, you can generate an app bundle with debug symbols using:
 
 flutter build appbundle --obfuscate --split-debug-info=build/app/symbols
-
-3. Or if you're building an APK:
-
-flutter build apk --obfuscate --split-debug-info=build/app/symbols
 
 ------------------------------------------------------------------------------
 
@@ -31,11 +61,12 @@ These debug symbols will help you:
 - Debug issues in production more effectively
 You can then upload these symbols to various services like Firebase Crashlytics or the Google Play Console to get readable crash reports.
 
-For Google Play Console:
+
+## Uploading Debug Symbols to Play Console
+After building, you should:
 
 1. Go to your app in the Play Console
-2. Navigate to your app release
-3. Find "App Bundle Explorer"
-4. Look for the option to upload debug symbols
-5. Upload the generated files from your build/app/symbols directory
-This will help you maintain and debug your app more effectively in production.
+2. Navigate to your app release under "Closed testing"
+3. Find "App Bundle Explorer" or the "Debug symbols" section
+4. Upload the generated files from your build/app/symbols directory
+This will help Google Play provide more readable crash reports if your app encounters issues in production, making it much easier to diagnose and fix problems.

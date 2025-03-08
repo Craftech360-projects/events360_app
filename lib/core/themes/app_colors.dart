@@ -8,6 +8,7 @@ class AppColors {
 
   // Neutrals
   static const Color white = Colors.white;
+  static const Color lightWhite = Color(0xFFF7F7F7); // Light background white
   static const Color black = Colors.black;
   static const Color grey = Color(0xFF545454); // Medium grey
   static const Color lightGrey = Color(0xFFBEBEBE); // Light grey

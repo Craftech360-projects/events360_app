@@ -1,48 +1,21 @@
 import 'dart:async';
 
-import 'package:events360/presentation/home/screens/home.dart';
+import 'package:events360/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  SplashScreenState createState() => SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
-  double _opacity = 0.0;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(const Duration(milliseconds: 500), () {
-      setState(() {
-        _opacity = 1.0;
-      });
-    });
-
-    Timer(const Duration(milliseconds: 3000), () {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) =>
-              const HomeScreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const begin = 0.0;
-            const end = 1.0;
-            var fadeAnimation =
-                Tween<double>(begin: begin, end: end).animate(animation);
-            return FadeTransition(
-              opacity: fadeAnimation,
-              child: child,
-            );
-          },
-          transitionDuration: const Duration(milliseconds: 800),
-        ),
-      );
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/landing');
     });
   }
 
@@ -51,24 +24,28 @@ class SplashScreenState extends State<SplashScreen>
     return Scaffold(
       body: Center(
         child: AnimatedOpacity(
-          opacity: _opacity,
+          opacity: 1.0,
           duration: const Duration(milliseconds: 1000),
           child: Center(
             child: RichText(
               textAlign: TextAlign.center,
-              text: const TextSpan(
-                style: TextStyle(
+              text: TextSpan(
+                style: const TextStyle(
+                  color: AppColors.black,
                   fontSize: 24.0,
+                  fontFamily: 'Satoshi',
                 ),
                 children: <TextSpan>[
                   TextSpan(
                     text: 'Events360\n',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineMedium
+                        ?.copyWith(color: AppColors.yellow),
                   ),
                   TextSpan(
-                    text: 'by Craftech360',
-                    style: TextStyle(fontSize: 18.0),
+                    text: 'Your one stop for all events',
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ],
               ),

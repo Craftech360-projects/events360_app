@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final lightTheme = ThemeData(
     useMaterial3: true,
-    appBarTheme: const AppBarTheme(backgroundColor: AppColors.white),
-    iconTheme: const IconThemeData(color: AppColors.white),
+    appBarTheme: const AppBarTheme(backgroundColor: AppColors.lightWhite),
+    iconTheme: const IconThemeData(color: AppColors.black),
     iconButtonTheme: const IconButtonThemeData(
-        style: ButtonStyle(iconColor: WidgetStatePropertyAll(AppColors.white))),
+      style: ButtonStyle(
+        iconColor: WidgetStatePropertyAll(AppColors.black),
+      ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         iconColor: const WidgetStatePropertyAll(AppColors.black),
@@ -20,6 +23,7 @@ class AppTheme {
     ),
     primaryColor: AppColors.purpleDark,
     brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.lightWhite,
     fontFamily: "Satoshi",
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
@@ -70,12 +74,16 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        iconColor: AppColors.white,
         elevation: 0,
         foregroundColor: AppColors.white,
         backgroundColor: AppColors.purpleDark,
         shadowColor: Colors.transparent,
         textStyle: const TextStyle(
-            fontSize: 17, fontFamily: "Satoshi", color: AppColors.white),
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+            fontFamily: "Satoshi",
+            color: AppColors.white),
         shape: RoundedRectangleBorder(borderRadius: Constants.br16),
       ),
     ),
@@ -100,6 +108,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(backgroundColor: AppColors.indigo),
     iconTheme: const IconThemeData(color: AppColors.white),
     primaryColor: AppColors.blue,
+    scaffoldBackgroundColor: AppColors.darkBg,
     brightness: Brightness.dark,
     fontFamily: "Satoshi",
     textTheme: const TextTheme(
@@ -156,7 +165,10 @@ class AppTheme {
         backgroundColor: AppColors.white,
         shadowColor: Colors.transparent,
         textStyle: const TextStyle(
-            fontSize: 17, fontFamily: "Satoshi", color: AppColors.black),
+            fontWeight: FontWeight.w600,
+            fontSize: 15,
+            fontFamily: "Satoshi",
+            color: AppColors.black),
         shape: RoundedRectangleBorder(borderRadius: Constants.br4),
       ),
     ),

@@ -13,7 +13,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.craftech360.events360"
-    compileSdk = 34
+    compileSdk = 35
     ndkVersion = "27.0.12077973"
 
     compileOptions {
@@ -52,16 +52,8 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        ndk {
-                debugSymbolLevel 'SYMBOL_TABLE'
-            }
     }
 }
-
-// dependencies {
-//     implementation 'com.google.android.play:app-update:2.1.0'
-//     implementation 'com.google.android.play:app-update-ktx:2.1.0'
-// }
 
 flutter {
     source = "../.."
