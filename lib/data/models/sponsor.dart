@@ -17,9 +17,19 @@ class Sponsor {
     return Sponsor(
       id: json['id'],
       name: json['name'],
-      tier: json['tier'],
+      tier: json['tier'] ?? '',
       logoUrl: json['logo_url'] ?? '',
-      booth: json['booth'],
+      booth: json['booth'] ?? '',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'tier': tier,
+      'logo_url': logoUrl,
+      'booth': booth,
+    };
   }
 }

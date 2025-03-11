@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 void showSnackBar(BuildContext context, String content) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      backgroundColor: AppColors.yellow,
+      backgroundColor: AppColors.lightBg,
       content: Text(
         content,
         style: const TextStyle(
           fontFamily: "Satoshi",
           fontSize: 17,
           fontWeight: FontWeight.w500,
-          color: AppColors.lightBg,
+          color: AppColors.blueGreyDark,
         ),
       ),
       shape: RoundedRectangleBorder(borderRadius: Constants.br8),

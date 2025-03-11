@@ -26,12 +26,24 @@ class AgendaItem {
       id: json['id'],
       eventId: json['event_id'],
       title: json['title'],
-      description: json['description'],
-      location: json['location'],
+      description: json['description'] ?? '',
+      location: json['location'] ?? '',
       startTime: DateTime.parse(json['start_time']),
       endTime: DateTime.parse(json['end_time']),
-      speaker:
-          json['speakers'] != null ? Speaker.fromJson(json['speakers']) : null,
+      speaker: json['speaker'] != null ? Speaker.fromJson(json['speaker']) : null,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'event_id': eventId,
+      'title': title,
+      'description': description,
+      'location': location,
+      'start_time': startTime.toIso8601String(),
+      'end_time': endTime.toIso8601String(),
+      'speaker_id': speaker?.id,
+    };
   }
 }

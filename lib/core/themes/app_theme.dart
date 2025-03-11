@@ -84,7 +84,7 @@ class AppTheme {
             fontSize: 15,
             fontFamily: "Satoshi",
             color: AppColors.white),
-        shape: RoundedRectangleBorder(borderRadius: Constants.br16),
+        shape: RoundedRectangleBorder(borderRadius: Constants.br12),
       ),
     ),
   );
@@ -160,16 +160,17 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+      iconColor: AppColors.white,
         elevation: 0,
-        foregroundColor: AppColors.black,
-        backgroundColor: AppColors.white,
+        foregroundColor: AppColors.white,
+        backgroundColor: AppColors.blue,
         shadowColor: Colors.transparent,
         textStyle: const TextStyle(
             fontWeight: FontWeight.w600,
             fontSize: 15,
             fontFamily: "Satoshi",
             color: AppColors.black),
-        shape: RoundedRectangleBorder(borderRadius: Constants.br4),
+        shape: RoundedRectangleBorder(borderRadius: Constants.br12),
       ),
     ),
   );

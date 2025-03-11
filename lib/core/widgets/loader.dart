@@ -68,7 +68,7 @@ class TypingIndicatorState extends State<TypingIndicator>
             height: widget.dotHeight,
           ),
         ),
-        Constants.w4,
+        Constants.w8,
         FadeTransition(
           opacity: _animation2,
           child: Dot(
@@ -76,7 +76,7 @@ class TypingIndicatorState extends State<TypingIndicator>
             height: widget.dotHeight,
           ),
         ),
-        Constants.w4,
+        Constants.w8,
         FadeTransition(
           opacity: _animation3,
           child: Dot(
@@ -98,11 +98,11 @@ class Dot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width ?? 7.5,
-      height: height ?? 7.5,
+      width: width ?? 8,
+      height: height ?? 8,
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.grey,
+        color: AppColors.white,
       ),
     );
   }

@@ -17,9 +17,19 @@ class Speaker {
     return Speaker(
       id: json['id'],
       name: json['name'],
-      title: json['title'],
-      bio: json['bio'],
+      title: json['title'] ?? '',
+      bio: json['bio'] ?? '',
       imageUrl: json['image_url'] ?? '',
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'title': title,
+      'bio': bio,
+      'image_url': imageUrl,
+    };
   }
 }

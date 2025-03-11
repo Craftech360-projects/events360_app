@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 
 class ProfileAvatar extends StatelessWidget {
-  final double radius;
-
+  final String? imageUrl;
   final String placeholderImage;
+  final double radius;
 
   const ProfileAvatar({
     super.key,
-    required this.radius,
+    this.imageUrl,
     required this.placeholderImage,
+    this.radius = 24,
   });
 
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Colors.grey[200],
-      child: ClipOval(
-        child: Image.asset(
-          placeholderImage,
-          width: radius * 2,
-          height: radius * 2,
-          fit: BoxFit.cover,
-        ),
-      ),
+      backgroundImage: imageUrl != null && imageUrl!.isNotEmpty
+          ? NetworkImage(imageUrl!) as ImageProvider
+          : AssetImage(placeholderImage),
+      onBackgroundImageError: imageUrl != null && imageUrl!.isNotEmpty
+          ? (_, __) {
+              // Handle network image loading error
+            }
+          : null,
     );
   }
 }

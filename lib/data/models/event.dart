@@ -2,19 +2,19 @@ class Event {
   final int id;
   final String name;
   final String description;
-  final String location;
   final DateTime startDate;
   final DateTime endDate;
-  final String imageUrl;
+  final String location;
+  final String? imageUrl;
 
   Event({
     required this.id,
     required this.name,
     required this.description,
-    required this.location,
     required this.startDate,
     required this.endDate,
-    required this.imageUrl,
+    required this.location,
+    this.imageUrl,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -22,10 +22,22 @@ class Event {
       id: json['id'],
       name: json['name'],
       description: json['description'],
-      location: json['location'],
       startDate: DateTime.parse(json['start_date']),
       endDate: DateTime.parse(json['end_date']),
-      imageUrl: json['image_url'] ?? '',
+      location: json['location'],
+      imageUrl: json['image_url'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'start_date': startDate.toIso8601String(),
+      'end_date': endDate.toIso8601String(),
+      'location': location,
+      'image_url': imageUrl,
+    };
   }
 }
